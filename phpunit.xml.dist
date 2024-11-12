@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         backupGlobals="false"
          bootstrap="vendor/autoload.php"
-         colors="false"
-         processIsolation="false"
-         stopOnFailure="false"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
          cacheDirectory=".phpunit.cache"
-         backupStaticProperties="false">
+         displayDetailsOnIncompleteTests="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         failOnIncomplete="true"
+         failOnWarning="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd">
   <testsuites>
     <testsuite name="Polynomial Regression Test">
       <directory>./tests/</directory>
@@ -21,10 +25,9 @@
   <coverage includeUncoveredFiles="true">
     <report>
       <clover outputFile="clover.xml"/>
-      <text
-              outputFile="php://stdout"
-              showUncoveredFiles="true"
-              showOnlySummary="true"
+      <text outputFile="php://stdout"
+            showUncoveredFiles="true"
+            showOnlySummary="true"
       />
     </report>
   </coverage>

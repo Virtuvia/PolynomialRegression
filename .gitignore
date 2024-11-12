@@ -1,5 +1,4 @@
-.direnv
 .idea
 .phpunit*cache
-.pre-commit-config.yaml
-/vendor/
+clover.xml
+vendor/
