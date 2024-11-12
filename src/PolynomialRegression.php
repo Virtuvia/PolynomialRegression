@@ -409,8 +409,8 @@ class PolynomialRegression
             // A row that has a term in this column, and has not yet been
             // reduced.
             $activeRow = 0;
-            while ( ( ( 0 == $matrix[ $activeRow ][ $column ] )
-                    || ( $isDone[ $activeRow ] ) )
+            while ( ( ( 0 == ( $matrix[ $activeRow ][ $column ] ?? 0 ) )
+                    || ( $isDone[ $activeRow ] ?? false ) )
                 && ( $activeRow < $rows ) )
             {
                 ++$activeRow;
@@ -465,6 +465,12 @@ class PolynomialRegression
         for ( $column = ( $rows - 1 ); $column >= 0; --$column )
         {
             // The active row is based on order.
+            if (!isset($order[ $column ])) {
+                $coefficients[ $column ] = null;
+
+                continue;
+            }
+
             $activeRow = $order[ $column ];
 
             // The active row is now finished.
@@ -521,7 +527,7 @@ class PolynomialRegression
                     $y,
                     bcmul
                     (
-                        $coefficients[ $coefficentIndex ],
+                        $coefficients[ $coefficentIndex ] ?? '',
                         bcpow( $x, $coefficentIndex )
                     )
                 );
