@@ -7,6 +7,25 @@ use PHPUnit\Framework\TestCase;
 
 class PolynomialRegressionTest extends TestCase
 {
+    public function testInsufficientData(): void
+    {
+        $pr = new PolynomialRegression(2);
+        $c = $pr->getCoefficients();
+        self::assertEquals([null, null], $c);
+
+        $pr = new PolynomialRegression(2);
+        $pr->addData(0, 1);
+        $c = $pr->getCoefficients();
+        self::assertEquals([1, null], $c);
+        $i = $pr::interpolate($c, 0);
+        self::assertEquals(1, $i);
+
+        $pr = new PolynomialRegression(2);
+        $pr->addData(0, 1);
+        $pr->addData(1, 2);
+        $c = $pr->getCoefficients();
+        self::assertEquals([1, 1], $c);
+    }
     
     public function testSetNumberOfCoefficent()
     {
